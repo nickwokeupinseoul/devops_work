@@ -6,14 +6,14 @@ pipeline {
     stages {
       stage('terraform init') {
         steps {
-          dir('./terraform/') {  
+          dir('/home/user') {  
             sh 'terraform init'
           }
         }
       }
       stage('terraform apply') {
         steps {
-          dir('./terraform/') {  
+          dir('/home/user') {  
             sh 'terraform apply -auto-approve'
           }
         }
