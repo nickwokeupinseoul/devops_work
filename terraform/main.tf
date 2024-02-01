@@ -22,7 +22,7 @@ resource "yandex_compute_instance" "sborka" {
   connection {
     type     = "ssh"
     user     = "user"
-    private_key = file("/home/user/.ssh/id_rsa")
+    private_key = file("./id_rsa")
     host = yandex_compute_instance.sborka.network_interface.0.nat_ip_address
   }
 
@@ -59,7 +59,7 @@ resource "yandex_compute_instance" "prod" {
   connection {
     type     = "ssh"
     user     = "user"
-    private_key = file("/home/user/.ssh/id_rsa")
+    private_key = file("./id_rsa")
     host = yandex_compute_instance.prod.network_interface.0.nat_ip_address
   }
 
