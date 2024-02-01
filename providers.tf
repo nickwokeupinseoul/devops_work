@@ -8,5 +8,8 @@ terraform {
 }
 
 provider "yandex" {
-  zone = "<зона_доступности_по_умолчанию>"
+  token = var.yc_iam_token
+  cloud_id  = var.yc_cloud_id
+  folder_id = var.yc_folder_id
+  zone      = "ru-central1-a"
 }
