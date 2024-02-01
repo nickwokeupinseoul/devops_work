@@ -91,3 +91,9 @@ resource "yandex_compute_disk" "serv-prod_ubuntu2004_15GB" {
   size = 15
 }
 
+output "external_ip_address_vm_assembly" {
+  value = yandex_compute_instance.serv-sbor.network_interface.0.nat_ip_address
+}
+output "external_ip_address_vm_prod" {
+  value = yandex_compute_instance.serv-prod.network_interface.0.nat_ip_address
+}
