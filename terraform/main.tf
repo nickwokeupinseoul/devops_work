@@ -13,7 +13,7 @@ resource "yandex_compute_instance" "sborka" {
     nat       = true
   }
   metadata = {
-    user-data = "${file("/home/user/terraform/metadata.yml")}"
+    user-data = "${file("/home/user/devops_work/terraform/metadata.yml")}"
   }
   scheduling_policy {
     preemptible = true 
@@ -50,7 +50,7 @@ resource "yandex_compute_instance" "prod" {
     nat       = true
   }
   metadata = {
-    user-data = "${file("/home/user/terraform/metadata.yml")}"
+    user-data = "${file("/home/user/devops_work/terraform/metadata.yml")}"
   }
   scheduling_policy {
     preemptible = true 
@@ -71,3 +71,6 @@ resource "yandex_compute_instance" "prod" {
   }
 
 }
+
+
+
