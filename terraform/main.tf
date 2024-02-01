@@ -16,13 +16,13 @@ resource "yandex_compute_instance" "sborka" {
     user-data = "${file("/home/user/devops_work/terraform/metadata.yml")}"
   }
   scheduling_policy {
-    preemptible = true 
+    preemptible = true
   }
 
   connection {
     type     = "ssh"
-    user     = "spring"
-    private_key = file("/var/lib/jenkins/id_rsa")
+    user     = "user"
+    private_key = file("/home/user/.ssh/id_rsa")
     host = yandex_compute_instance.sborka.network_interface.0.nat_ip_address
   }
 
@@ -53,19 +53,19 @@ resource "yandex_compute_instance" "prod" {
     user-data = "${file("/home/user/devops_work/terraform/metadata.yml")}"
   }
   scheduling_policy {
-    preemptible = true 
+    preemptible = true
   }
 
   connection {
     type     = "ssh"
     user     = "user"
-    private_key = file("/var/lib/jenkins/id_rsa")
+    private_key = file("/home/user/.ssh/id_rsa")
     host = yandex_compute_instance.prod.network_interface.0.nat_ip_address
   }
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt update", 
+      "sudo apt update",
       "sudo apt install ansible -y"
     ]
   }
@@ -76,14 +76,13 @@ data "yandex_compute_image" "ubuntu_image" {
   family = "ubuntu-2004-lts"
 }
 
-# boot disk for vm-assembly = ubuntu 20.04 with 15GB
 resource "yandex_compute_disk" "serv-sbor_ubuntu2004_15GB" {
   type     = "network-ssd"
   zone     = "ru-central1-a"
   image_id = data.yandex_compute_image.ubuntu_image.id
   size = 15
 }
-# boot disk for vm-prod = ubuntu 20.04 with 15GB
+
 resource "yandex_compute_disk" "serv-prod_ubuntu2004_15GB" {
   type     = "network-ssd"
   zone     = "ru-central1-a"
@@ -92,8 +91,8 @@ resource "yandex_compute_disk" "serv-prod_ubuntu2004_15GB" {
 }
 
 output "external_ip_address_vm_assembly" {
-  value = yandex_compute_instance.serv-sbor.network_interface.0.nat_ip_address
+  value = yandex_compute_instance.sborka.network_interface.0.nat_ip_address
 }
 output "external_ip_address_vm_prod" {
-  value = yandex_compute_instance.serv-prod.network_interface.0.nat_ip_address
+  value = yandex_compute_instance.prod.network_interface.0.nat_ip_address
 }
