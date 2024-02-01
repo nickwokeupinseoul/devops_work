@@ -29,11 +29,7 @@ variable "name" {
   }
 }
 
-variable "subnets" {
-  description = "Subnets in folder"
-  type = list(object({
-    name           = optional(string)
-    zone           = optional(string, "ru-central1-a")
-    v4_cidr_blocks = list(string)
-  }))
+variable "subnet_id" {
+  description = "ID of the subnet"
+  type        = string
 }
