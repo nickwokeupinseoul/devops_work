@@ -1,3 +1,8 @@
+variable "service_account_key_file" {
+  description = "Service account key file"
+  type        = string
+  default     = "/app/sa_key.json"
+}
 
 variable "cloud_id" {
   description = "Cloud ID"
