@@ -1,1 +1,16 @@
+---
 
+- name: group [sborka] - make the artifact
+  hosts: serv-sbor
+  become: yes
+  vars_files:
+  - /etc/ansible/params.yml
+  tasks:
+  - name: group [sborka] - prepare infrastructure
+    apt: name={{ item }} state=present
+    with_items:
+    - git
+    - mc
+    - default-jdk
+    - maven
+    - docker.io
