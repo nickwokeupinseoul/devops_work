@@ -1,12 +1,10 @@
 ---
 
-- name: group [sborka] - make the artifact
+- name: [sborka] - make the artifact
   hosts: serv-sbor
-  become: yes
-  vars_files:
-  - /etc/ansible/params.yml
+  become: true
   tasks:
-  - name: group [sborka] - prepare infrastructure
+  - name: [sborka] - prepare infrastructure
     apt: name={{ item }} state=present
     with_items:
     - git
@@ -14,3 +12,50 @@
     - default-jdk
     - maven
     - docker.io
+
+- name: [sborka] - Clone GIT Repository for app
+    git:
+      repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
+      dest: /tmp/boxfuse-sample-java-war-hello
+      clone: yes
+      update: yes
+- name: [sborka] - Make WAR with maven
+    shell: cd /tmp/boxfuse-sample-java-war-hello && mvn package
+
+
+  - name: [sborka] - Clone GIT repo
+    git:
+      repo: 'https://github.com/nickwokeupinseoul/devops_work.git'
+      dest: /tmp/devops_work
+      clone: yes
+      update: yes
+  - name: Copy WAR
+    copy:
+      src: /tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war
+      dest: /tmp/devops_work/hello.war
+      force: true
+      remote_src: yes
+
+  - name: [sborka] - BUILD docker
+    shell: cd /tmp/devops_work && docker build -t myapp .
+  - name: [sborka] - TAG docker image
+    shell: cd /tmp/devops_work && docker tag myapp cr.yandex/{{ registry_id }}/myapp:{{ version }}
+  - name: [sborka] - PUSH to Yandex cloud registry
+    shell: cd /tmp/devops_work && docker push cr.yandex/{{ registry_id }}/myapp:{{ version }}
+
+
+- name: [prod] - RUN the app
+  hosts: serv-prod
+  become: yes
+  tasks:
+  - name: [prod] - prepare infrastructure
+    apt: name={{ item }} state=present
+    with_items:
+    - docker.io
+  - name: [prod] - PULL from registry
+    shell: docker pull cr.yandex/{{ registry_id }}/myapp:{{ version }}
+  - name: [prod] - RUN app in docker
+    shell: docker run -d -p 8080:8080 cr.yandex/{{ registry_id }}/mysite1:{{ version }}
+
+
+
