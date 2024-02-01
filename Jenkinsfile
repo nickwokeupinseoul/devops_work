@@ -6,12 +6,16 @@ pipeline {
     stages {
       stage('terraform init') {
         steps {
-          sh 'terraform init'
+          dir('/home/user/devops-work/terraform/') {  
+            sh 'terraform init'
+          }
         }
       }
       stage('terraform apply') {
         steps {
-          sh 'terraform apply -auto-approve'
+          dir('/home/user/devops-work/terraform/') {  
+            sh 'terraform apply -auto-approve'
+          }
         }
       }
       
