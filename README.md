@@ -8,23 +8,23 @@
 * sudo apt install git -y
 * sudo apt install mc -y
 
-Настройка yandex cloud: 
+**Настройка yandex cloud:**
 * sudo curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
 * yc init
 * yc config list
 * Сгенерировать ключ для сервисного аккаунта: \
 yc iam key create --service-account-name <sa_name> --output key.json
 
-Установить Terraform:
+**Установить Terraform:**
 * https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli?in=terraform%2Faws-get-started \
 * создать /.terraformrc и добавить источник провайдера  \
 sudo nano ~/.terraformrc
 sudo cp ~/.terraformrc /var/lib/jenkins
 
-Установить Ansible:
+**Установить Ansible:**
 * sudo apt install ansible -y
 
-Установить Jenkins: 
+**Установить Jenkins:** 
 * https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
 * получить пароль от jenkins admin: \
   sudo cat /var/lib/jenkins/secrets/initialAdminPassword \
@@ -32,7 +32,7 @@ sudo cp ~/.terraformrc /var/lib/jenkins
 * Создать pipeline с опцией Pipeline script from SCM (Git). Указать Repository URL, ветку и имя Jenkins-файла
 * Запустить pipeline
 
-http://ip-serv-prod:8080/hello
+**http://ip-serv-prod:8080/hello**
   
 
   
