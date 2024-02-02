@@ -3,6 +3,8 @@
 - name: [sborka] - make the artifact
   hosts: serv-sbor
   become: true
+  vars_files:
+  - /etc/ansible/variables.yml
   tasks:
   - name: [sborka] - prepare infrastructure
     apt: name={{ item }} state=present
@@ -46,7 +48,9 @@
 
 - name: [prod] - RUN the app
   hosts: serv-prod
-  become: yes
+  become: true
+  vars_files:
+  - /etc/ansible/variables.yml
   tasks:
   - name: [prod] - prepare infrastructure
     apt: name={{ item }} state=present
