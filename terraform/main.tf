@@ -90,9 +90,9 @@ resource "yandex_compute_disk" "serv-prod_ubuntu2004_15GB" {
   size = 15
 }
 
-output "external_ip_address_vm_assembly" {
+output "external_ip_address_sborka" {
   value = yandex_compute_instance.sborka.network_interface.0.nat_ip_address
 }
-output "external_ip_address_vm_prod" {
+output "external_ip_address_prod" {
   value = yandex_compute_instance.prod.network_interface.0.nat_ip_address
 }
