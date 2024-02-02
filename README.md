@@ -16,7 +16,7 @@
 yc iam key create --service-account-name <sa_name> --output key.json
 
 **Установить Terraform:**
-* https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli?in=terraform%2Faws-get-started \
+* https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli?in=terraform%2Faws-get-started
 * создать /.terraformrc и добавить источник провайдера  \
 sudo nano ~/.terraformrc
 sudo cp ~/.terraformrc /var/lib/jenkins
