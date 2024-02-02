@@ -30,7 +30,7 @@ sudo cp ~/.terraformrc /var/lib/jenkins
   sudo cat /var/lib/jenkins/secrets/initialAdminPassword \
 * для подключения к консоли: http://ip-adress-main:8080
 * Создать pipeline с опцией Pipeline script from SCM (Git). Указать Repository URL, ветку и имя Jenkins-файла
-* Запустить pipeline
+* Запустить сборку
 
 **http://ip-serv-prod:8080/hello**
   
