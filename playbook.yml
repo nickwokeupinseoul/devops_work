@@ -59,7 +59,7 @@
   - name: [prod] - PULL from registry
     shell: docker pull cr.yandex/{{ registry_id }}/myapp:{{ version }}
   - name: [prod] - RUN app in docker
-    shell: docker run -d -p 8080:8080 cr.yandex/{{ registry_id }}/mysite1:{{ version }}
+    shell: docker run -d -p 8080:8080 cr.yandex/{{ registry_id }}/myapp:{{ version }}
 
 
 
