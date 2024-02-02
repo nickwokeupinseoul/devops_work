@@ -6,5 +6,4 @@ users:
     shell: /bin/bash
     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
     ssh-authorized-keys:
-      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFu9WkNtlDU7yh9JefrDtenY1cIlkTyIuBcE8sHYi24C bezhe@DESKTOP-UB7F4CA
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9BNbzKCD915yujFFBARmVDOblsIaFhdxn3aNae1C6x0FauJ2HY+r1Jt9kpNsiyhfIVxwO8EpTdB9BgyGd9VNh891wQ6mzImjfMJRcloEGh8Ds87HNrduPifJ8qf4nXBY/zqaH8NFTLQhW1xKrYuiTyjPBBTQhpiu/ws2krZ3XcRwdyBj1q3hVK9EMmpwmiPEImcSzMaeOKxU1tmu5qf5Zcd0PKwxeTPajRd/cRLih+P3a00vzysIXV5GZTy+AcYZd5Jend4zaDq2hm5IoVytcVR3ePIqehGVaPSzCHkQ4/vbuQSRY0rHNURWRG+LCtI0Ricnd2rPMmTIntXynpT2/BzID5V9Kn3CtGurr0Z3EvplPiC7hC0u58lGq3S4JLwy9kVe+UpHgJ78S6xsJJ8e+mK1eWrbQDQ3psgb8uhfr0zmnyMk3Ae/Dz/TZgS4WcJzVKKisiFgTtcrPnw3/zmtdDFgYjcMcOcMZay0jXrilF2+bI+WHtMZBPi9cQow6I/k= user@serv-main
+      - #enter your keys here
